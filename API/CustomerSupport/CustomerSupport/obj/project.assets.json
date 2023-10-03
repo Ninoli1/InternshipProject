@@ -1491,11 +1491,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\Internship\\InternshipProject\\API\\CustomerSupport\\CustomerSupport\\CustomerSupport.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\Internship_Project\\InternshipProject\\API\\CustomerSupport\\CustomerSupport\\CustomerSupport.csproj",
       "projectName": "CustomerSupport",
-      "projectPath": "C:\\Users\\Lenovo\\Desktop\\Internship\\InternshipProject\\API\\CustomerSupport\\CustomerSupport\\CustomerSupport.csproj",
+      "projectPath": "C:\\Users\\Lenovo\\Desktop\\Internship_Project\\InternshipProject\\API\\CustomerSupport\\CustomerSupport\\CustomerSupport.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo\\Desktop\\Internship\\InternshipProject\\API\\CustomerSupport\\CustomerSupport\\obj\\",
+      "outputPath": "C:\\Users\\Lenovo\\Desktop\\Internship_Project\\InternshipProject\\API\\CustomerSupport\\CustomerSupport\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",

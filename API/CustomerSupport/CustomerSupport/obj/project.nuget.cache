@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5UYQx+okMSuKozRs0gr2/QnNoPgRrCnOQwhE07vkRyqCcjaaFFxFD94Dpt2RNvq3d66+So5hkK2R/Pyq1yk6bw==",
+  "dgSpecHash": "MEaYwNli/k2pqTOb18dnqMHatEUa/nTU1b9aycsatjH7XYFZdTgawJK6XQ5RC7HJZ66gKGz8r54zuqi3a3MhzA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\Internship\\InternshipProject\\API\\CustomerSupport\\CustomerSupport\\CustomerSupport.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\Internship_Project\\InternshipProject\\API\\CustomerSupport\\CustomerSupport\\CustomerSupport.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.11\\microsoft.aspnetcore.openapi.7.0.11.nupkg.sha512",
