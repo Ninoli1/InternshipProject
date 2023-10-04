@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CustomerSupport.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CustomerSupport.Data
 {
@@ -7,5 +8,7 @@ namespace CustomerSupport.Data
         public CustomerSupportDbContext(DbContextOptions options) : base(options)
         {
         }
+
+        public DbSet<User> Users { get; set; }
     }
 }
