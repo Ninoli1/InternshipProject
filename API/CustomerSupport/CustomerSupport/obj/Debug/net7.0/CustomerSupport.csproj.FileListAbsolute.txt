@@ -84,3 +84,10 @@ C:\Users\Lenovo\Desktop\Internship_Project\InternshipProject\API\CustomerSupport
 C:\Users\Lenovo\Desktop\Internship_Project\InternshipProject\API\CustomerSupport\CustomerSupport\obj\Debug\net7.0\CustomerSupport.pdb
 C:\Users\Lenovo\Desktop\Internship_Project\InternshipProject\API\CustomerSupport\CustomerSupport\obj\Debug\net7.0\CustomerSupport.genruntimeconfig.cache
 C:\Users\Lenovo\Desktop\Internship_Project\InternshipProject\API\CustomerSupport\CustomerSupport\obj\Debug\net7.0\ref\CustomerSupport.dll
+C:\Users\Lenovo\Desktop\Internship_Project\InternshipProject\API\CustomerSupport\CustomerSupport\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Lenovo\Desktop\Internship_Project\InternshipProject\API\CustomerSupport\CustomerSupport\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Lenovo\Desktop\Internship_Project\InternshipProject\API\CustomerSupport\CustomerSupport\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Lenovo\Desktop\Internship_Project\InternshipProject\API\CustomerSupport\CustomerSupport\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Lenovo\Desktop\Internship_Project\InternshipProject\API\CustomerSupport\CustomerSupport\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Lenovo\Desktop\Internship_Project\InternshipProject\API\CustomerSupport\CustomerSupport\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Lenovo\Desktop\Internship_Project\InternshipProject\API\CustomerSupport\CustomerSupport\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
