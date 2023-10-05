@@ -62,6 +62,7 @@ constructor(private formBuilder: FormBuilder,private authService: Authentication
         this.authService.logInUser(this.user).subscribe({
           next: (message)=>{
             console.log(message);
+            alert(message);
           },
           error: (response)=>{
             console.log(response);

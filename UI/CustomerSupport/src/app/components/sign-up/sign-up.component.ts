@@ -69,6 +69,7 @@ export class SignUpComponent implements OnInit{
         this.authService.registerUser(this.user).subscribe({
           next: (message)=>{
             console.log(message);
+            alert(message);
           },
           error: (response)=>{
             console.log(response);
