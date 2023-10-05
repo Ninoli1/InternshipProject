@@ -41,6 +41,7 @@ namespace CustomerSupport.Controllers
             }
 
             user.Id = new Guid();
+            user.Password = PasswordHasher.HashPassword(user.Password);
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
             return Ok(new { Message = "User successfully registered!"});
