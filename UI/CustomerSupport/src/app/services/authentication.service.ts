@@ -18,4 +18,15 @@ export class AuthenticationService {
     return this.http.post<any>(this.baseApi + '/api/User/authenticate', user);
   }
 
+  storeToken(tokenValue: string){
+     localStorage.setItem('token',tokenValue);
+  }
+
+  getToken(){
+    return localStorage.getItem('token');
+  }
+
+  isLoggedIn():boolean{
+    return !!localStorage.getItem('token');
+  }
 }

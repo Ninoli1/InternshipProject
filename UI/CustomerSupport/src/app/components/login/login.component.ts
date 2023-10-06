@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit{
     role:'',
     token:''
   }
-constructor(private formBuilder: FormBuilder,private authService: AuthenticationService ) {}
+constructor(private formBuilder: FormBuilder,private authService: AuthenticationService,private router: Router ) {}
 
   ngOnInit(): void {
     this.buildLoginForm();
@@ -60,12 +61,16 @@ constructor(private formBuilder: FormBuilder,private authService: Authentication
         this.user.id= "00000000-0000-0000-0000-000000000000";
         console.log(this.user);
         this.authService.logInUser(this.user).subscribe({
-          next: (message)=>{
-            console.log(message);
-            alert(message);
+          next: (response)=>{
+            console.log(response.message);
+            alert(response.message);
+            this.loginForm.reset();
+            this.authService.storeToken(response.token);
+            this.router.navigate(['chat-room']);
           },
           error: (response)=>{
             console.log(response);
+            alert(response);
           }
         })
       }
