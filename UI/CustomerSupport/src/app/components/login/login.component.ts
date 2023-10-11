@@ -17,6 +17,9 @@ export class LoginComponent implements OnInit{
   eyeIcon: string = "fa-eye-slash";
   loginForm! : FormGroup;
   chatService= inject(ChatService)
+  formBuilder= inject(FormBuilder)
+  authService= inject(AuthenticationService)
+  router=inject(Router)
   user: User={
     id:'',
     username:'',
@@ -27,7 +30,8 @@ export class LoginComponent implements OnInit{
     role:'',
     token:''
   }
-constructor(private formBuilder: FormBuilder,private authService: AuthenticationService,private router: Router ) {}
+
+
 
   ngOnInit(): void {
     this.buildLoginForm();
@@ -51,44 +55,7 @@ constructor(private formBuilder: FormBuilder,private authService: Authentication
 
   onSubmit(){
     if(this.loginForm.valid){
-      const usernameControl = this.loginForm.get('username');
-      const passwordControl = this.loginForm.get('password');
-
-      if(usernameControl && passwordControl){
-        const username=usernameControl.value;
-        const password = passwordControl.value;
-
-        this.user.username=username;
-        this.user.password= password;
-        this.user.id= "00000000-0000-0000-0000-000000000000";
-        console.log(this.user);
-        this.authService.logInUser(this.user).subscribe({
-          next: (response)=>{
-            console.log(response.message);
-            alert(response.message);
-            this.authService.storeToken(response.token);
-
-            const user= this.user.username;
-            const room= "chatRoom";
-            this.chatService.start();
-            sessionStorage.setItem("user", user);
-            this.chatService.joinRoom(user,room)
-            .then(()=>{
-              this.router.navigate(['chat-room']);
-
-            }).catch((error)=>{
-              console.log(error);
-            })
-           
-
-            
-          },
-          error: (response)=>{
-            console.log(response);
-            alert(response);
-          }
-        })
-      }
+      this.logUser();
      
     }else{
       console.log("All fields required");
@@ -108,5 +75,54 @@ constructor(private formBuilder: FormBuilder,private authService: Authentication
       }
     })
 
+  }
+
+  private logUser(){
+
+    const usernameControl = this.loginForm.get('username');
+    const passwordControl = this.loginForm.get('password');
+
+      if(usernameControl && passwordControl){
+        const username=usernameControl.value;
+        const password = passwordControl.value;
+        //populate fields
+        this.user.username=username;
+        this.user.password= password;
+        this.user.id= "00000000-0000-0000-0000-000000000000";
+
+        console.log(this.user);
+
+        this.callAuthService();
+      }
+  }
+
+  private callAuthService(){
+    this.authService.logInUser(this.user).subscribe({
+      next: (response)=>{
+        console.log(response.message);
+        alert(response.message);
+        this.authService.storeToken(response.token);
+       this.connectToChatRoom();  
+      },
+      error: (response)=>{
+        console.log(response);
+        alert(response);
+      }
+    })
+  }
+
+  private connectToChatRoom(){
+
+    const user= this.user.username;
+    const room= "chatRoom";
+    this.chatService.start();
+    sessionStorage.setItem("user", user);
+    this.chatService.joinRoom(user,room)
+    .then(()=>{
+      this.router.navigate(['chat-room']);
+
+    }).catch((error)=>{
+      console.log(error);
+    })
   }
 }
