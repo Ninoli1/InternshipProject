@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit{
   isText : boolean = false;
   eyeIcon: string = "fa-eye-slash";
   loginForm! : FormGroup;
+  chatService= inject(ChatService)
   user: User={
     id:'',
     username:'',
@@ -64,9 +66,22 @@ constructor(private formBuilder: FormBuilder,private authService: Authentication
           next: (response)=>{
             console.log(response.message);
             alert(response.message);
-            this.loginForm.reset();
             this.authService.storeToken(response.token);
-            this.router.navigate(['chat-room']);
+
+            const user= this.user.username;
+            const room= "chatRoom";
+            this.chatService.start();
+            sessionStorage.setItem("user", user);
+            this.chatService.joinRoom(user,room)
+            .then(()=>{
+              this.router.navigate(['chat-room']);
+
+            }).catch((error)=>{
+              console.log(error);
+            })
+           
+
+            
           },
           error: (response)=>{
             console.log(response);

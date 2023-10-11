@@ -1,1 +1,72 @@
-<p>chat-room works!</p>
+<div class="container mt-5">
+<div class="chat_header">
+        <h3 class="text-center my-2">Customer <span style="color:rgb(30, 30, 221)"> Support</span></h3>
+        <button class="btn btn-danger" (click)="leaveChat()">Leave Chat</button>
+    </div>
+
+    <div class="messaging">
+        <div class="inbox_msg">
+            <div class="left">
+            <div class="inbox_people">
+                <div class="heading_srch">
+                    <div class="recent_heading">
+                        <h4 class="text-white">Connected Users</h4>
+                    </div>
+
+                   
+                </div>
+
+                <div class="inbox_chat">
+                    <div class="chat_list">
+                        <div class="chat_people">
+                            <div class="chat_img">
+                                <img src="https://www.freeiconspng.com/thumbs/person-icon-blue/person-icon-blue-18.png" >
+                                <div class="chat_ib mt-3">
+                                    <h5>{{loggedInUserName}}<span class="online"></span></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="mesgs" >
+                    <div #scroll class="msg_history">
+                        <ng-container *ngFor="let message of messages">
+                            <div [ngClass]="{'incoming_msg': message.user != loggedInUserName, 'outgoing_msg': message.user=== loggedInUserName}">
+                                <div *ngIf="message.user !=loggedInUserName" class="incoming_msg_img">
+                                        <img src="https://www.freeiconspng.com/thumbs/person-icon-blue/person-icon-blue-18.png">
+                                </div>
+                                <div *ngIf="message.user !=loggedInUserName" class="recieved_msg">
+                                    <div class="recieved_withd_msg">
+                                        <p>{{message.message}}</p>
+                                        <span class="time_date">{{message.user}} | {{message.sentTime | date: 'medium'}}</span>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="message.user === loggedInUserName" class="sent_msg">
+                                    <div class="recieved_withd_msg">
+                                        <p>{{message.message}}</p>
+                                        <span class="time_date">{{message.user}} | {{message.sentTime | date: 'medium'}}</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ng-container>
+
+                    </div>
+
+                    <div class="type_msg">
+                        <div class="input_msg_write">
+                            <input type="text" class="write_msg" placeholder="Type a message" [(ngModel)]="inputMessage" (keydown.enter)="sendMessage()">
+                            <button class="msg_send_btn" type="button" (click)="sendMessage()"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+           
+        </div>
+    </div>
+</div>

@@ -1,4 +1,6 @@
 using CustomerSupport.Data;
+using CustomerSupport.Hub;
+using CustomerSupport.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,11 +11,14 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSignalR();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<IDictionary<string, UserRoom>>(new Dictionary<string, UserRoom>());
+
 
 builder.Services.AddDbContext<CustomerSupportDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("FullStackConnection")));
@@ -51,6 +56,11 @@ if (app.Environment.IsDevelopment())
 app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseHttpsRedirection();
 
+app.UseRouting();
+app.UseEndpoints(endpoint =>
+{
+    endpoint.MapHub<ChatHub>(pattern: "/chat");
+});
 app.UseAuthentication();
 app.UseAuthorization();
 
