@@ -115,14 +115,29 @@ export class LoginComponent implements OnInit{
 
     const user= this.user.username;
     const room= "chatRoom";
-    this.chatService.start();
+   // this.chatService.start();
     sessionStorage.setItem("user", user);
     this.chatService.joinRoom(user,room)
     .then(()=>{
-      this.router.navigate(['chat-room']);
+      //this.chatService.start();
+      this.router.navigate(['chat']);
 
     }).catch((error)=>{
+      console.log("Url greska: ", this.chatService.connection.baseUrl);
       console.log(error);
     })
+  }
+
+  generateRandomString() {
+    const length = 10; 
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'; // Dozvoljeni karakteri
+
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      result += characters.charAt(randomIndex);
+    }
+
+    return  result;
   }
 }

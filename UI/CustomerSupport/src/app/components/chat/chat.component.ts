@@ -1,18 +1,19 @@
-import { AfterViewChecked, Component, ElementRef, OnInit ,ViewChild,inject} from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import * as signalR from '@microsoft/signalr';
 import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
-  selector: 'app-chat-room',
-  templateUrl: './chat-room.component.html',
-  styleUrls: ['./chat-room.component.css']
+  selector: 'app-chat',
+  templateUrl: './chat.component.html',
+  styleUrls: ['./chat.component.css']
 })
-export class ChatRoomComponent implements OnInit, AfterViewChecked{
+export class ChatComponent implements OnInit, AfterViewChecked{
 
   chatService= inject(ChatService);
   router= inject(Router);
   messages: any[]=[];
+  users: any[]=[];
   inputMessage="";
   loggedInUserName=sessionStorage.getItem("user");
   @ViewChild('scroll') private scrollContainer!: ElementRef;
@@ -22,7 +23,10 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked{
       this.messages=response;
       console.log("Porukee : ",this.messages);
     })
-    console.log("Trenutni ulogovani korisnik: ", this.loggedInUserName);
+    this.chatService.users$.subscribe(response=>{
+      this.users=response;
+      console.log("Ulogovani ::", this.users);
+    })
   }
 
   ngAfterViewChecked(): void {
@@ -55,4 +59,5 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked{
       console.log(error)
     })
   }
+
 }

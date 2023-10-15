@@ -1,5 +1,6 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -10,6 +11,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class SignUpComponent implements OnInit{
   
+  router= inject(Router);
   type: string = "password";
   isText : boolean = false;
   eyeIcon: string = "fa-eye-slash";
@@ -70,6 +72,8 @@ export class SignUpComponent implements OnInit{
           next: (message)=>{
             console.log(message);
             alert(message);
+            this.router.navigate(['login']);
+
           },
           error: (response)=>{
             console.log(response);
