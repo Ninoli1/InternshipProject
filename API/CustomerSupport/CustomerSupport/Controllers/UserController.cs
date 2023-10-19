@@ -43,8 +43,9 @@ namespace CustomerSupport.Controllers
 
             return Ok(new
             {
-                Token= user.Token,
-                Message = "Successfully Logged In!"
+                Token = user.Token,
+                Message = "Successfully Logged In!",
+                Role = user.Role
             }) ;
         }
 

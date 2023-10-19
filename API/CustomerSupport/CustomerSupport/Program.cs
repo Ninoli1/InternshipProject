@@ -1,6 +1,7 @@
 using CustomerSupport.Data;
 using CustomerSupport.Hub;
 using CustomerSupport.Models;
+using CustomerSupport.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddSignalR();
+builder.Services.AddTransient<CategoriesService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
