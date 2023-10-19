@@ -11,6 +11,7 @@ export class ChatService  {
 
   public messages: any[]=[];
   public users: string[]=[];
+  public rooms: string[]=[];
   public messages$= new BehaviorSubject<any>([]);
   public users$= new BehaviorSubject<string[]>([]);
 
@@ -60,5 +61,12 @@ export class ChatService  {
   public async LeaveRoom(){
     this.connection.stop();
   }
+  addRoom(room:string) {
+    this.rooms.push(room);
+  }
 
+  getRoomsForCategory(category: string) {
+    console.log("Sve sobe ", this.rooms);
+    return this.rooms.filter(room => room.includes(category));
+  }
 }

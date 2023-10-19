@@ -13,6 +13,7 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked{
   chatService= inject(ChatService);
   router= inject(Router);
   messages: any[]=[];
+  
   inputMessage="";
   loggedInUserName=sessionStorage.getItem("user");
   @ViewChild('scroll') private scrollContainer!: ElementRef;
@@ -55,4 +56,7 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked{
       console.log(error)
     })
   }
+
+
+  
 }

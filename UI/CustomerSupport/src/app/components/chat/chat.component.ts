@@ -8,12 +8,14 @@ import { ChatService } from 'src/app/services/chat.service';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit, AfterViewChecked{
+export class ChatComponent implements OnInit,AfterViewChecked{
 
+  selectedCategory= sessionStorage.getItem("category");
   chatService= inject(ChatService);
   router= inject(Router);
   messages: any[]=[];
   users: any[]=[];
+  rooms:string[]=[];
   inputMessage="";
   loggedInUserName=sessionStorage.getItem("user");
   @ViewChild('scroll') private scrollContainer!: ElementRef;
@@ -42,10 +44,11 @@ export class ChatComponent implements OnInit, AfterViewChecked{
     })
 
   }
-
+/*
   leaveChat(){
     this.chatService.LeaveRoom()
     .then(()=>{
+      this.removeRoom();
       this.router.navigate(['login']);
 
       this.chatService.connection= new signalR.HubConnectionBuilder()
@@ -60,4 +63,17 @@ export class ChatComponent implements OnInit, AfterViewChecked{
     })
   }
 
+  removeRoom(){
+    const savedListJSON = localStorage.getItem('listaStringova');
+        const list = savedListJSON ? JSON.parse(savedListJSON) : [];
+        
+        
+       const stringToRemove= this.selectedCategory+"-"+this.loggedInUserName;
+        if(stringToRemove!=null){
+        this.rooms = list.filter((item: string) => item !== stringToRemove);
+        }
+        localStorage.setItem('listaStringova', JSON.stringify(this.rooms));
+        console.log("Azurirana lista nakon izbacivanja", this.rooms);
+   }
+  */
 }
