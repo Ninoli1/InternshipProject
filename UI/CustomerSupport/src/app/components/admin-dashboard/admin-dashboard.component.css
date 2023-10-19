@@ -1,0 +1,69 @@
+#background_header{
+    width:100%;
+    height: 20vh;
+    background-color: cadetblue;
+}
+
+#background_body{
+    height: 80vh;
+    background: white;
+
+    
+
+}
+
+.container {
+    margin-top: 50px;
+    justify-content: center;
+    width: 800px;
+    height: 400px;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    text-align: center;
+    
+    color: darkblue;
+    
+    position: relative;
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+}
+.userDetails{
+    margin-left: 1190px;
+    padding-top: 70px;
+}
+
+img{
+    width: 30px;
+    height: 30px;
+    margin-right: 3px;
+}
+
+.fa-list-alt{
+    margin-right: 3px;
+    margin-left: 5px;
+}
+
+.roomContainer{
+    margin-left: 150px;
+    margin-top: 50px;
+    width: 450px;
+    
+    
+    
+    
+}
+.rooms{
+    background-color: cadetblue;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 50px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+
+.Button{
+    margin-left: 5px;
+    border-radius: 20px;
+    margin-top: 3px;
+}

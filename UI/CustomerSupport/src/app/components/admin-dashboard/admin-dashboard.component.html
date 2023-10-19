@@ -1,0 +1,32 @@
+
+<div id="background_header">
+    <div class="userDetails">
+        
+        
+        <h5><span><img src="https://cdn-icons-png.flaticon.com/512/9131/9131529.png"> </span>Username: <span>{{loggedInUserName}}</span></h5>
+        <h5><span ><i class="fa fa-list-alt" aria-hidden="true"></i></span>Category: <span>{{selectedCategory}}</span></h5>
+        
+    </div>
+</div>
+<div id="background_body">
+   
+    
+    <div class="container">
+        <h3>New chats<span><button class="Button" (click)="showClick()">show</button></span> </h3>
+        <div class="roomContainer">
+        <ng-container *ngFor="let room of rooms$| async" >
+            <div class="rooms">
+                <p>{{room}}<span><button class="Button" (click)="joinAdmin(room)">Join room</button></span></p>
+                
+            </div>
+        </ng-container>
+    </div>
+      </div>
+    
+</div>
+
+    
+
+
+
+
