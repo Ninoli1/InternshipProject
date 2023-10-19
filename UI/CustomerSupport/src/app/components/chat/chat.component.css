@@ -203,3 +203,12 @@ img{
      margin: 20px 480px 20px 20px;
      border-radius: 5px;
  }
+
+ .logoutButton{
+
+    border-radius: 10px;
+    margin-top: 35px;
+    margin-left: 730px;
+    background-color: #05728f;
+    font-size: 20px;
+ }

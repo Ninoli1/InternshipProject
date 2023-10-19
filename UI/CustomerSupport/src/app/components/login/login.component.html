@@ -4,9 +4,21 @@
             <div class="offset-md-2 col-lg-4 col-md-6 offset-lg-4 offset-md-3">
                 <div class="panel border bg-white">
                     <div class="panel-heading">
+                      
                         <h3 class="pt-3 font-weight-bold">Login</h3>
+                       
                     </div>
+    
+                    <div class="combo">
+                        <select class="select"  [(ngModel)]="selectedValue" >
+                            <option *ngFor="let option of options" [value]="option" >{{option}}</option>
+                        </select>
+                    
+                    </div>
+                
+
                     <div class="panel-body p-3">
+                       
                         <form [formGroup]="loginForm">
                             <div class="form-group pt-3">
                                 <div class="input-field" [class.error]="loginForm.controls['username'].dirty && loginForm.hasError('required','username')">
@@ -21,16 +33,19 @@
                                     <span class="fa fa-lock p-2"></span>
                                     <input [type]="type" placeholder="Password" formControlName="password" >
                                     <span (click)="hideOrShowPassword()" class="fa fa-eye-slash" style="margin-left: auto;" ></span>
+                                    
                                 </div>
+                            
                             </div>
                             <small class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">*Password is required</small>
                            
-                            <div class="form-inline fr mt-4">
-                                <a id="forgot" class="font-weight-bold">Forgot Password ?</a>
-                            </div>
+                            
+                        <br>
+                           
                             <button (click)="onSubmit()" type="submit" class="btn btn-primary btn-block mt-4 w-100">Login</button>
                             <div class="text-center pt-4 text-muted">Don't have an account? <a routerLink="/signup">Sign Up</a></div>
                         </form>
+                       
                     </div>
                 </div>
             </div> 

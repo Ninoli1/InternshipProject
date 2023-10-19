@@ -9,6 +9,7 @@
                  <p style="margin-top: auto; margin-left: 10px;">{{loggedInUserName}}</p>  
                 
              </div>   
+             
         </div>
 
         <div id="sidebar_content">
@@ -19,7 +20,9 @@
 
     
         <div class="chat_history">
-            <div class="chat_header"></div>
+            <div class="chat_header">
+                <button class="logoutButton" >Logout</button>
+            </div>
             <div class="chat_body">
                 <div class="message"  #scroll>
                 <ng-container *ngFor="let message of messages">
