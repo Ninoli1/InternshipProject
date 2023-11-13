@@ -9,43 +9,22 @@ import { BehaviorSubject } from 'rxjs';
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css']
 })
-export class AdminDashboardComponent implements OnInit{
+export class AdminDashboardComponent {
 
   public rooms$= new BehaviorSubject<string[]>([]);
   selectedCategory= sessionStorage.getItem("category");
   chatService= inject(ChatService);
   router=inject(Router);
   private listSubject = new BehaviorSubject<string[]>([]);
-
   list$ = this.listSubject.asObservable();
   rooms:string[]=[];
   loggedInUserName=sessionStorage.getItem("user");
+
+
   constructor(){
     console.log("Dobavljena kategorija: ", this.selectedCategory);
 
-    const savedListJSON = localStorage.getItem('listaStringova');
-        const list = savedListJSON ? JSON.parse(savedListJSON) : [];
-        console.log("Sacuvana lista" , list);
-        this.listSubject.next(list);
-
-        if(this.selectedCategory!=null){
-        this.rooms = list.filter((string:string|null ) => {
-          return string !== null && string.includes(this.selectedCategory as string);
-        });
-        }
-        this.listSubject.next(list);
-        console.log("Sobee:", this.rooms);
-        console.log("broj soba : ", this.rooms.length);
-        console.log("Korisnik:", this.loggedInUserName);
-        
-        this.rooms$.next(this.rooms);
-        console.log(this.rooms$);
-  }
-  ngOnInit(): void {
-  
-    
-  
-   
+   this.getCategoryRooms();
   }
  
   joinAdmin(room:string){
@@ -73,4 +52,21 @@ export class AdminDashboardComponent implements OnInit{
     }
   }
   
+  getCategoryRooms(){
+    
+        const savedListJSON = localStorage.getItem('listaStringova');
+        const list = savedListJSON ? JSON.parse(savedListJSON) : [];
+
+        if(this.selectedCategory!=null){
+        this.rooms = list.filter((string:string|null ) => {
+          return string !== null && string.includes(this.selectedCategory as string);
+        });
+        }
+        console.log("Sobee:", this.rooms);
+        console.log("broj soba : ", this.rooms.length);
+        console.log("Korisnik:", this.loggedInUserName);
+        
+        this.rooms$.next(this.rooms);
+        console.log(this.rooms$);
+  }
 }

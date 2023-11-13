@@ -36,23 +36,15 @@ export class LoginComponent implements OnInit{
   }
 
   constructor() {
-    
     this.categoriesService.getAllCategories().subscribe({
       next: (response)=>{
         this.options = ["Problem category", ...response];
-
-        console.log("opcije: ", this.options);
-        
         this.selectedValue=this.options[0];
       }
     })
-     
   }
-
   ngOnInit(): void {
     this.buildLoginForm();
-
-
   }
 
   buildLoginForm(){
@@ -115,10 +107,7 @@ export class LoginComponent implements OnInit{
   private callAuthService(){
     this.authService.logInUser(this.user).subscribe({
       next: (response)=>{
-        console.log(response.message);
         this.user.role=response.role;
-        console.log("Role: ",this.user.role);
-        alert(response.message);
         this.authService.storeToken(response.token);
        this.connectToChatRoom();  
       },
@@ -153,7 +142,6 @@ export class LoginComponent implements OnInit{
         
         console.log(room);
         console.log("Sacuvana lista",localStorage.getItem('listaStringova'));
-        console.log(this.chatService.getRoomsForCategory(this.selectedValue));
         this.router.navigate(['chat']);
       }
       
@@ -165,16 +153,5 @@ export class LoginComponent implements OnInit{
     })
   }
 
-  generateRandomString() {
-    const length = 10; 
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'; // Dozvoljeni karakteri
-
-    let result = '';
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      result += characters.charAt(randomIndex);
-    }
-
-    return  result;
-  }
+ 
 }

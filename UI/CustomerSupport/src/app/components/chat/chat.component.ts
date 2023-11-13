@@ -21,14 +21,7 @@ export class ChatComponent implements OnInit,AfterViewChecked{
   @ViewChild('scroll') private scrollContainer!: ElementRef;
 
   ngOnInit(): void {
-    this.chatService.messages$.subscribe(response=>{
-      this.messages=response;
-      console.log("Porukee : ",this.messages);
-    })
-    this.chatService.users$.subscribe(response=>{
-      this.users=response;
-      console.log("Ulogovani ::", this.users);
-    })
+   this.manageMessagesAndUsers();
   }
 
   ngAfterViewChecked(): void {
@@ -76,4 +69,15 @@ export class ChatComponent implements OnInit,AfterViewChecked{
         console.log("Azurirana lista nakon izbacivanja", this.rooms);
    }
   */
+
+   manageMessagesAndUsers(){
+    this.chatService.messages$.subscribe(response=>{
+      this.messages=response;
+      console.log("Porukee : ",this.messages);
+    })
+    this.chatService.users$.subscribe(response=>{
+      this.users=response;
+      console.log("Ulogovani ::", this.users);
+    })
+   }
 }
